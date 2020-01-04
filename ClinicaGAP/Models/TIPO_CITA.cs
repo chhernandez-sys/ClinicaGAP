@@ -11,7 +11,8 @@ namespace ClinicaGAP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TIPO_CITA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace ClinicaGAP.Models
         }
     
         public int ID_TIPO_CITA { get; set; }
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "La descripción no debe superar los 30 caracteres.")]
         public string DESCRIPCION { get; set; }
         public int ESTADO { get; set; }
     

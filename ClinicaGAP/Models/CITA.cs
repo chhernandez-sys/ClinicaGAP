@@ -9,14 +9,16 @@
 
 namespace ClinicaGAP.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CITA
     {
         public int ID_CITA { get; set; }
+        [Required(ErrorMessage = "La fecha de la cita es requerida.")]
         public System.DateTime FECHA_CITA { get; set; }
         public int TIPO_CITA { get; set; }
+        [Required(ErrorMessage = "La descripción es requerida.")]
+        [StringLength(150, MinimumLength = 1, ErrorMessage = "La descripción no debe superar los 150 caracteres.")]
         public string DESCRIPCION { get; set; }
         public int ESTADO { get; set; }
         public int ID_PACIENTE { get; set; }

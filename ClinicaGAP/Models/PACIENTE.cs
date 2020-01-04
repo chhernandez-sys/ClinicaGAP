@@ -11,7 +11,8 @@ namespace ClinicaGAP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PACIENTE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +22,22 @@ namespace ClinicaGAP.Models
         }
     
         public int ID_PACIENTE { get; set; }
+        [Required(ErrorMessage = "La cédula es requerida.")]
+        [StringLength(15, MinimumLength = 1, ErrorMessage = "La cédula no debe superar los 15 caracteres.")]
         public string CEDULA { get; set; }
+        [Required(ErrorMessage = "El primer nombre es requerido.")]
+        [StringLength(60, MinimumLength = 1, ErrorMessage = "El primer nombre no debe superar los 60 caracteres.")]
         public string PRIMER_NOMBRE { get; set; }
+        [StringLength(60, MinimumLength = 1, ErrorMessage = "El segundo nombre no debe superar los 60 caracteres.")]
         public string SEGUNDO_NOMBRE { get; set; }
+        [Required(ErrorMessage = "El primer apellido es requerido.")]
+        [StringLength(60, MinimumLength = 1, ErrorMessage = "El primer apellido no debe superar los 60 caracteres.")]
         public string PRIMER_APELLIDO { get; set; }
+        [StringLength(60, MinimumLength = 1, ErrorMessage = "El segundo apellido no debe superar los 60 caracteres.")]
         public string SEGUNDO_APELLIDO { get; set; }
+        [StringLength(60, MinimumLength = 1, ErrorMessage = "El télefono de contacto no debe superar los 60 caracteres.")]
         public string TELEFONO_CONTACTO { get; set; }
+        [StringLength(60, MinimumLength = 1, ErrorMessage = "El correo de contacto no debe superar los 60 caracteres.")]
         public string CORREO_CONTACTO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
