@@ -1,0 +1,64 @@
+﻿@model ClinicaGAP.Models.CITA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Administración de citas.</h2>
+
+<h3>¿Estás seguro de que quieres borrar esto?</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_CITA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CITA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO1.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO1.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PACIENTE.CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_CITA1.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_CITA1.DESCRIPCION)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

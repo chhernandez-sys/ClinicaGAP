@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ClinicaGAP.Models.PACIENTE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Administración de pacientes.</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CEDULA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRIMER_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEGUNDO_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRIMER_APELLIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEGUNDO_APELLIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO_CONTACTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORREO_CONTACTO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CEDULA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRIMER_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEGUNDO_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRIMER_APELLIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEGUNDO_APELLIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO_CONTACTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CORREO_CONTACTO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_PACIENTE }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_PACIENTE }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_PACIENTE })
+        </td>
+    </tr>
+}
+
+</table>

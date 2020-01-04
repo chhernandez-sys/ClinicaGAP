@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ClinicaGAP.Models.CITA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Administración de citas.</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_CITA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO1.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACIENTE.CEDULA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_CITA1.DESCRIPCION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_CITA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO1.DESCRIPCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PACIENTE.CEDULA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_CITA1.DESCRIPCION)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_CITA }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_CITA }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_CITA })
+        </td>
+    </tr>
+}
+
+</table>

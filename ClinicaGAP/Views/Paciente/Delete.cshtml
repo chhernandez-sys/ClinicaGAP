@@ -1,0 +1,66 @@
+﻿@model ClinicaGAP.Models.PACIENTE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Administración de pacientes.</h2>
+
+<h3>¿Estás seguro de que quieres borrar esto?</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CEDULA)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CEDULA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PRIMER_NOMBRE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PRIMER_NOMBRE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SEGUNDO_NOMBRE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SEGUNDO_NOMBRE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PRIMER_APELLIDO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PRIMER_APELLIDO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SEGUNDO_APELLIDO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SEGUNDO_APELLIDO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO_CONTACTO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO_CONTACTO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO_CONTACTO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CORREO_CONTACTO)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
