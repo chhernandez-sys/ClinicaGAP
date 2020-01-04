@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using ClinicaGAP.Models;
+using ClinicaGAP.Persistence;
 
 namespace ClinicaGAP.Controllers
 {
