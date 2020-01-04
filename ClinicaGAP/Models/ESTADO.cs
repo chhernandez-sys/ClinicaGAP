@@ -24,6 +24,7 @@ namespace ClinicaGAP.Models
     
         public int ID_ESTADO { get; set; }
         [Required(ErrorMessage = "La descripción es requerida.")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "La descripción no debe superar los 30 caracteres.")]
         public string DESCRIPCION { get; set; }
         
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
