@@ -1,0 +1,24 @@
+﻿@model ClinicaGAP.Models.ESTADO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Administración de estados.</h2>
+
+<div>
+    <h4>Detalles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_ESTADO }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
