@@ -26,5 +26,6 @@ namespace ClinicaGAP.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CITA> CITA { get; set; }
+        public virtual ESTADO ESTADO1 { get; set; }
     }
 }

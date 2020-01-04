@@ -9,6 +9,7 @@
 
 namespace ClinicaGAP.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -18,13 +19,16 @@ namespace ClinicaGAP.Models
         public ESTADO()
         {
             this.CITA = new HashSet<CITA>();
+            this.TIPO_CITA = new HashSet<TIPO_CITA>();
         }
     
         public int ID_ESTADO { get; set; }
         [Required(ErrorMessage = "La descripción es requerida.")]
         public string DESCRIPCION { get; set; }
-    
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CITA> CITA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TIPO_CITA> TIPO_CITA { get; set; }
     }
 }

@@ -1,0 +1,30 @@
+﻿@model ClinicaGAP.Models.TIPO_CITA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Administración de tipos de cita.</h2>
+
+<div>
+    <h4>Detalles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_TIPO_CITA }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

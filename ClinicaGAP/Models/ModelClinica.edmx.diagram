@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4bd49a36176446acaf7ec5ea92d9acfe" Name="Diagram1">
-        <EntityTypeShape EntityType="ClinicaGAPModel.CITA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaGAPModel.ESTADO" Width="1.5" PointX="1" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaGAPModel.PACIENTE" Width="1.5" PointX="1" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaGAPModel.TIPO_CITA" Width="1.5" PointX="5.125" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="ClinicaGAPModel.FK_ESTADO" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicaGAPModel.FK_ID_PACIENTE" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicaGAPModel.FK_TIPO_CITA" ManuallyRouted="false" />
+      <Diagram DiagramId="91ce41e7dc634add9ee3dd175cb7ddd7" Name="Diagram1">
+        <EntityTypeShape EntityType="ClinicaGAPModel.CITA" Width="1.5" PointX="1.875" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaGAPModel.ESTADO" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaGAPModel.PACIENTE" Width="1.5" PointX="5.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaGAPModel.TIPO_CITA" Width="1.5" PointX="3.875" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="ClinicaGAPModel.FK_CITA_ESTADO" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicaGAPModel.FK_CITA_ID_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicaGAPModel.FK_CITA_TIPO_CITA" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicaGAPModel.FK_TIPO_CITA_ESTADO" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

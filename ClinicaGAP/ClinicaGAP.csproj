@@ -173,6 +173,7 @@
     <Compile Include="Controllers\EstadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TipoCitaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,10 +185,6 @@
       <DependentUpon>ModelClinica.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Repositories\IRepository.cs" />
-    <Compile Include="Models\Repositories\ITipoCitaRepository.cs" />
-    <Compile Include="Models\IUnitOfWork.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelClinica.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -206,6 +203,10 @@
     <Compile Include="Models\PACIENTE.cs">
       <DependentUpon>ModelClinica.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Repositories\IRepository.cs" />
+    <Compile Include="Models\Repositories\ITipoCitaRepository.cs" />
+    <Compile Include="Models\IUnitOfWork.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TIPO_CITA.cs">
       <DependentUpon>ModelClinica.tt</DependentUpon>
     </Compile>
@@ -294,6 +295,11 @@
     <Content Include="Views\Estado\Details.cshtml" />
     <Content Include="Views\Estado\Edit.cshtml" />
     <Content Include="Views\Estado\Index.cshtml" />
+    <Content Include="Views\TipoCita\Create.cshtml" />
+    <Content Include="Views\TipoCita\Delete.cshtml" />
+    <Content Include="Views\TipoCita\Details.cshtml" />
+    <Content Include="Views\TipoCita\Edit.cshtml" />
+    <Content Include="Views\TipoCita\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

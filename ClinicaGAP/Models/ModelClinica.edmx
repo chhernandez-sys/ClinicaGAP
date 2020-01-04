@@ -44,7 +44,7 @@
           <Property Name="DESCRIPCION" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="ESTADO" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_ESTADO">
+        <Association Name="FK_CITA_ESTADO">
           <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
           <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -56,7 +56,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ID_PACIENTE">
+        <Association Name="FK_CITA_ID_PACIENTE">
           <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
           <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -68,7 +68,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TIPO_CITA">
+        <Association Name="FK_CITA_TIPO_CITA">
           <End Role="TIPO_CITA" Type="Self.TIPO_CITA" Multiplicity="1" />
           <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,22 +80,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TIPO_CITA_ESTADO">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
+          <End Role="TIPO_CITA" Type="Self.TIPO_CITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="TIPO_CITA">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ClinicaGAPModelStoreContainer">
           <EntitySet Name="CITA" EntityType="Self.CITA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_CITA" EntityType="Self.TIPO_CITA" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ESTADO" Association="Self.FK_ESTADO">
+          <AssociationSet Name="FK_CITA_ESTADO" Association="Self.FK_CITA_ESTADO">
             <End Role="ESTADO" EntitySet="ESTADO" />
             <End Role="CITA" EntitySet="CITA" />
           </AssociationSet>
-          <AssociationSet Name="FK_ID_PACIENTE" Association="Self.FK_ID_PACIENTE">
+          <AssociationSet Name="FK_CITA_ID_PACIENTE" Association="Self.FK_CITA_ID_PACIENTE">
             <End Role="PACIENTE" EntitySet="PACIENTE" />
             <End Role="CITA" EntitySet="CITA" />
           </AssociationSet>
-          <AssociationSet Name="FK_TIPO_CITA" Association="Self.FK_TIPO_CITA">
+          <AssociationSet Name="FK_CITA_TIPO_CITA" Association="Self.FK_CITA_TIPO_CITA">
             <End Role="TIPO_CITA" EntitySet="TIPO_CITA" />
             <End Role="CITA" EntitySet="CITA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIPO_CITA_ESTADO" Association="Self.FK_TIPO_CITA_ESTADO">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="TIPO_CITA" EntitySet="TIPO_CITA" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -113,9 +129,9 @@
           <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ESTADO" Type="Int32" Nullable="false" />
           <Property Name="ID_PACIENTE" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ESTADO1" Relationship="Self.FK_ESTADO" FromRole="CITA" ToRole="ESTADO" />
-          <NavigationProperty Name="PACIENTE" Relationship="Self.FK_ID_PACIENTE" FromRole="CITA" ToRole="PACIENTE" />
-          <NavigationProperty Name="TIPO_CITA1" Relationship="Self.FK_TIPO_CITA" FromRole="CITA" ToRole="TIPO_CITA" />
+          <NavigationProperty Name="ESTADO1" Relationship="Self.FK_CITA_ESTADO" FromRole="CITA" ToRole="ESTADO" />
+          <NavigationProperty Name="PACIENTE" Relationship="Self.FK_CITA_ID_PACIENTE" FromRole="CITA" ToRole="PACIENTE" />
+          <NavigationProperty Name="TIPO_CITA1" Relationship="Self.FK_CITA_TIPO_CITA" FromRole="CITA" ToRole="TIPO_CITA" />
         </EntityType>
         <EntityType Name="ESTADO">
           <Key>
@@ -123,7 +139,8 @@
           </Key>
           <Property Name="ID_ESTADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CITA" Relationship="Self.FK_ESTADO" FromRole="ESTADO" ToRole="CITA" />
+          <NavigationProperty Name="CITA" Relationship="Self.FK_CITA_ESTADO" FromRole="ESTADO" ToRole="CITA" />
+          <NavigationProperty Name="TIPO_CITA" Relationship="Self.FK_TIPO_CITA_ESTADO" FromRole="ESTADO" ToRole="TIPO_CITA" />
         </EntityType>
         <EntityType Name="PACIENTE">
           <Key>
@@ -137,7 +154,7 @@
           <Property Name="SEGUNDO_APELLIDO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TELEFONO_CONTACTO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="CORREO_CONTACTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CITA" Relationship="Self.FK_ID_PACIENTE" FromRole="PACIENTE" ToRole="CITA" />
+          <NavigationProperty Name="CITA" Relationship="Self.FK_CITA_ID_PACIENTE" FromRole="PACIENTE" ToRole="CITA" />
         </EntityType>
         <EntityType Name="TIPO_CITA">
           <Key>
@@ -146,9 +163,10 @@
           <Property Name="ID_TIPO_CITA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ESTADO" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CITA" Relationship="Self.FK_TIPO_CITA" FromRole="TIPO_CITA" ToRole="CITA" />
+          <NavigationProperty Name="CITA" Relationship="Self.FK_CITA_TIPO_CITA" FromRole="TIPO_CITA" ToRole="CITA" />
+          <NavigationProperty Name="ESTADO1" Relationship="Self.FK_TIPO_CITA_ESTADO" FromRole="TIPO_CITA" ToRole="ESTADO" />
         </EntityType>
-        <Association Name="FK_ESTADO">
+        <Association Name="FK_CITA_ESTADO">
           <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
           <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ID_PACIENTE">
+        <Association Name="FK_CITA_ID_PACIENTE">
           <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
           <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -172,7 +190,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TIPO_CITA">
+        <Association Name="FK_CITA_TIPO_CITA">
           <End Role="TIPO_CITA" Type="Self.TIPO_CITA" Multiplicity="1" />
           <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,22 +202,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TIPO_CITA_ESTADO">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
+          <End Role="TIPO_CITA" Type="Self.TIPO_CITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="TIPO_CITA">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ClinicaGAPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CITA" EntityType="Self.CITA" />
           <EntitySet Name="ESTADO" EntityType="Self.ESTADO" />
           <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" />
           <EntitySet Name="TIPO_CITA" EntityType="Self.TIPO_CITA" />
-          <AssociationSet Name="FK_ESTADO" Association="Self.FK_ESTADO">
+          <AssociationSet Name="FK_CITA_ESTADO" Association="Self.FK_CITA_ESTADO">
             <End Role="ESTADO" EntitySet="ESTADO" />
             <End Role="CITA" EntitySet="CITA" />
           </AssociationSet>
-          <AssociationSet Name="FK_ID_PACIENTE" Association="Self.FK_ID_PACIENTE">
+          <AssociationSet Name="FK_CITA_ID_PACIENTE" Association="Self.FK_CITA_ID_PACIENTE">
             <End Role="PACIENTE" EntitySet="PACIENTE" />
             <End Role="CITA" EntitySet="CITA" />
           </AssociationSet>
-          <AssociationSet Name="FK_TIPO_CITA" Association="Self.FK_TIPO_CITA">
+          <AssociationSet Name="FK_CITA_TIPO_CITA" Association="Self.FK_CITA_TIPO_CITA">
             <End Role="TIPO_CITA" EntitySet="TIPO_CITA" />
             <End Role="CITA" EntitySet="CITA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIPO_CITA_ESTADO" Association="Self.FK_TIPO_CITA_ESTADO">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="TIPO_CITA" EntitySet="TIPO_CITA" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
