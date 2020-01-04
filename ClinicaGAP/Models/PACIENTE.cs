@@ -33,6 +33,7 @@ namespace ClinicaGAP.Models
         [Required(ErrorMessage = "El primer apellido es requerido.")]
         [StringLength(60, MinimumLength = 1, ErrorMessage = "El primer apellido no debe superar los 60 caracteres.")]
         public string PRIMER_APELLIDO { get; set; }
+        [Required(ErrorMessage = "El segundo apellido es requerido.")]
         [StringLength(60, MinimumLength = 1, ErrorMessage = "El segundo apellido no debe superar los 60 caracteres.")]
         public string SEGUNDO_APELLIDO { get; set; }
         [StringLength(60, MinimumLength = 1, ErrorMessage = "El télefono de contacto no debe superar los 60 caracteres.")]
