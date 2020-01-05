@@ -90,15 +90,29 @@ namespace ClinicaGAP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_CITA,FECHA_CITA,TIPO_CITA,DESCRIPCION,ESTADO,ID_PACIENTE")] CITA cITA)
         {
-            if (ModelState.IsValid)
+            List<ESTADO> Estado = db.ESTADO.ToList();
+            var FechaActual = DateTime.Now;
+            var FechaCita = cITA.FECHA_CITA;
+            TimeSpan DifFechas = FechaCita - FechaActual;
+            int Dias = DifFechas.Days;
+            var DescripcionEstado = Estado.Where(s => s.ID_ESTADO == cITA.ESTADO).Select(s => s.DESCRIPCION).FirstOrDefault();
+
+            if (Dias < 1 && DescripcionEstado == "Cancelada")
             {
-                db.Entry(cITA).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ESTADO = new SelectList(db.ESTADO, "ID_ESTADO", "DESCRIPCION", cITA.ESTADO);
-            ViewBag.ID_PACIENTE = new SelectList(db.PACIENTE, "ID_PACIENTE", "CEDULA", cITA.ID_PACIENTE);
-            ViewBag.TIPO_CITA = new SelectList(db.TIPO_CITA, "ID_TIPO_CITA", "DESCRIPCION", cITA.TIPO_CITA);
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(cITA).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                ViewBag.ESTADO = new SelectList(db.ESTADO, "ID_ESTADO", "DESCRIPCION", cITA.ESTADO);
+                ViewBag.ID_PACIENTE = new SelectList(db.PACIENTE, "ID_PACIENTE", "CEDULA", cITA.ID_PACIENTE);
+                ViewBag.TIPO_CITA = new SelectList(db.TIPO_CITA, "ID_TIPO_CITA", "DESCRIPCION", cITA.TIPO_CITA);
+            }
             return View(cITA);
         }
 
