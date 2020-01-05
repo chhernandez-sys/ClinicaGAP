@@ -14,12 +14,11 @@ namespace ClinicaGAP.Controllers
         // GET: TipoCita
         public ActionResult Index()
         {
-            using (var unitOfWork = new UnitOfWork(new ClinicaGAPEntities()))
-            {
+            var unitOfWork = new UnitOfWork(db);
             var tipoCita = unitOfWork.TipoCita.GetTiposCita();
-            
-                return View(tipoCita.ToList());
-            }
+            ViewBag.ESTADO = new SelectList(db.ESTADO, "ID_ESTADO", "DESCRIPCION");
+
+            return View(tipoCita.ToList());
         }
 
         // GET: TipoCita/Details/5
@@ -40,6 +39,7 @@ namespace ClinicaGAP.Controllers
         // GET: TipoCita/Create
         public ActionResult Create()
         {
+            ViewBag.ESTADO = new SelectList(db.ESTADO, "ID_ESTADO", "DESCRIPCION");
             return View();
         }
 
@@ -72,6 +72,7 @@ namespace ClinicaGAP.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ESTADO = new SelectList(db.ESTADO, "ID_ESTADO", "DESCRIPCION", tIPO_CITA.ESTADO);
             return View(tIPO_CITA);
         }
 
