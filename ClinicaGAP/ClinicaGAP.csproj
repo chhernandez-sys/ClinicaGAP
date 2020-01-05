@@ -216,6 +216,7 @@
     <Compile Include="Persistence\Repositories\TipoCitaRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServicioAdministracion.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
